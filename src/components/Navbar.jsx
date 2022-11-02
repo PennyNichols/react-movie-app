@@ -15,6 +15,7 @@ const Navbar = () => {
 		logout();
 		navigate("/login");
 	};
+
 	return (
 		<nav
 			className="navbar navbar-expand-lg fixed-top navbar-dark"

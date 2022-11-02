@@ -86,7 +86,7 @@ const Login = () => {
 							className="btn btn-primary form-control mt-3"
 							onClick={submitHandler}
 						>
-							Login
+							Login{" "}
 						</button>
 					</div>
 				</form>
@@ -95,6 +95,7 @@ const Login = () => {
 					className="btn btn-primary form-control mt-3"
 					onClick={providerHandler}
 				>
+					{" "}
 					Continue with Google
 				</button>
 				<p className="text-center text-light mt-3">
