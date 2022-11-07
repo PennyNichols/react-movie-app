@@ -3,13 +3,23 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useState } from "react";
 import { logout } from "../firebase";
+import axios from "axios";
+import { MovieContext } from "../context/MovieContext";
+
+const baseUrl = 'https://api.themoviedb.org/3'
+const searchUrl = `${baseUrl}//search/movie?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&query=`
 
 const Navbar = () => {
 	const navigate = useNavigate();
 	let { currentUser } = useContext(AuthContext);
+  let {setMovies} = useContext(MovieContext)
 	const [search, setSearch] = useState();
 
-	const searchHandler = () => {};
+	const searchHandler = async(e) => {
+    e.preventDefault()
+    const res = await axios.get(`${searchUrl}${search}`)
+    setMovies(res.data.results)
+  };
 
 	const logoutHandler = () => {
 		logout();
@@ -28,7 +38,7 @@ const Navbar = () => {
 				<div className="d-flex align-items-center">
 					{currentUser ? (
 						<>
-							<form class="d-flex">
+							<form class="d-flex ms-2" onSubmit={searchHandler}>
 								<input
 									class="form-control me-2"
 									type="search"
@@ -38,13 +48,13 @@ const Navbar = () => {
 								/>
 								<button
 									class="btn btn-outline-success"
-									type="button"
-									onClick={searchHandler}
+									type="submit"
+									
 								>
 									Search
 								</button>
 							</form>
-							<h4 className="text-capitalize d-inline-block text-warning mx-2">
+							<h4 className="text-capitalize d-inline-block text-warning mx-4">
 								{currentUser?.displayName}
 							</h4>
 							<button
