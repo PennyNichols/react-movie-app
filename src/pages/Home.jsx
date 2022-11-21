@@ -6,7 +6,7 @@ const Home = () => {
   const {movies} = useContext(MovieContext)
 
   return (
-    <div className='d-flex justify-content-center flex-wrap page' style={ {background: '#555'} }>
+    <div className='home d-flex justify-content-center flex-wrap page' style={ {background: '#555'} }>
       { movies.map(movie => <MovieCard movie={ movie } key={ movie.id} />)}
     </div>
   )

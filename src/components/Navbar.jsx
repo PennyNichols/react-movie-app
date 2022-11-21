@@ -54,7 +54,7 @@ const Navbar = () => {
 									Search
 								</button>
 							</form>
-							<h4 className="text-capitalize d-inline-block text-warning mx-4">
+							<h4 className="name text-capitalize d-inline-block text-warning mx-4">
 								{currentUser?.displayName}
 							</h4>
 							<button

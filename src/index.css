@@ -21,3 +21,13 @@ code {
 .page{
   margin-top: 60px;
 }
+
+@media (max-width: 800px){
+  .home{
+    padding-top: 6rem;
+
+  }
+  .name{
+    display: none !important;
+  }
+}
